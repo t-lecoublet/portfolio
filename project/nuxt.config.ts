@@ -6,7 +6,12 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  modules: ['@nuxt/eslint', '@nuxtjs/tailwindcss', '@nuxt/fonts'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
+    '@nuxt/image'
+  ],
   eslint: {
     config: {
       stylistic: true
