@@ -2,6 +2,7 @@
 
     <NavComponent />
     <NavHrComponent />
+    <HeroComponent />
     <div class="tmp">
         test
     </div>
