@@ -15,16 +15,12 @@
         border-image-source: linear-gradient(90deg,transparent 0%,#4F0562 15%, #4F0562 85%, transparent 100%);
         filter: none;
         border-image-slice: 1;
-        max-width: 1545px;
+        max-width: var(--max-size);
 
         & img {
             @apply absolute top-0 left-1/2 -translate-x-1/2;
-            /* top: 0;
-            right: 0; */
-            /* transform: translateX(-50%); */
-            /* width: 100%; */
             max-width: 1140px;
-            height: 519px;
+            width: 100vw;
         }
     }
 </style>

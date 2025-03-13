@@ -39,7 +39,8 @@ header {
 
 .nav {
     @apply flex justify-between items-center w-full mx-auto;
-    max-width: 1545px;
+    max-width: var(--max-size);
+    width: 100%;
     height: 75px;
 
     &__logo {
@@ -47,7 +48,7 @@ header {
     }
 
     &__menu {
-        @apply flex items-center;
+        @apply flex items-center sm:w-full justify-end overflow-hidden;
 
         ul {
             @apply flex space-x-4 gap-16;

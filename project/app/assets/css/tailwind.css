@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 
+:root {
+    --max-size: 1545px;
+}
+
 * {
     font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 100vw;
+    overflow-x: clip;
 }

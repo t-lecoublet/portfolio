@@ -3,19 +3,18 @@
     <NavComponent />
     <NavHrComponent />
     <HeroComponent />
-    <div class="tmp">
+    <!-- <div class="tmp">
         test
-    </div>
+    </div> -->
 
 </template>
 
 
 <style scoped>
 
-    .tmp {
+    /* .tmp {
         color:white;
         height: 200vh;
-        /* border: 1px solid red; */
-    }
+    } */
 
 </style>
