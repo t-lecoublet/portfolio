@@ -16,7 +16,11 @@
         </div>
         <div class="hero__preview">
             <div class="hero__preview__content">
-                test
+                <div name="logoNpreview">
+                    <img class="logo" src="/main/logoSvgToPlan.svg" alt="logo" />
+                </div>
+                <div name="content">content</div>
+                <div name="tagsNlinks">tagsNlinks</div>
             </div>
             <div class="hero__preview__pages">
 
@@ -116,12 +120,33 @@
         &__content {
             display: grid;
             grid-template: 
-                "a c" 1fr
-                "b c" 1fr / 1fr 1fr;
+                "logoNpreview content" 1fr
+                "tagsNlinks content" 1fr / 1fr 1fr;
             margin: 4.75rem 0;
             width: 52.5625rem;
             height: 39.9375rem;
             background-color: #0E111E;
+            padding: 0 5.125rem;
+
+            [name="logoNpreview"] {
+                grid-area: logoNpreview;
+                background-color: #FF9257;
+            }
+
+            [name="content"] {
+                grid-area: content;
+                background-color: #1A1D2A;
+            }
+
+            [name="tagsNlinks"] {
+                grid-area: tagsNlinks;
+                background-color: #2b45b6;
+            }
+
+            & .logo {
+                max-height: 340px;
+                margin-top: -4.75rem;
+            }
         }
     }
 }
