@@ -62,6 +62,10 @@ header {
                     color: #21C7D2;
                 }
             }
+
+            @media (max-width: 768px) {
+                @apply hidden;
+            }
         }
     }
 }

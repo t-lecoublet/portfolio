@@ -22,5 +22,9 @@
             max-width: 1140px;
             width: 100vw;
         }
+
+        @media (max-width: 600px) {
+            @apply hidden;
+        }
     }
 </style>

@@ -116,8 +116,8 @@
     width: 100vw;
 
     /*// cssrem-disable-next-line */
-    @media (max-width: 1024px) {
-        grid-template-columns: 1fr;
+    @media (max-width: 1440px) {
+        @apply grid-cols-1;
 
     }
 
@@ -125,11 +125,24 @@
         @apply flex flex-col justify-center;
         color: #fff;
 
+        @media (max-width: 1440px) {
+            @apply mx-auto items-center;
+            margin: minmax(10vh, 200px) 0;
+        }
+
+        @media (max-width: 600px) {
+            @apply items-start;
+        }
+
         h2 {
             font-weight: 500;
             font-size: 3rem;
             line-height: 3rem;
             position: relative;
+
+            @media (max-width: 600px) {
+                font-size: 2rem;
+            }
 
             &::after {
                 content: '';
@@ -141,6 +154,10 @@
                 transform: translateY(-50%);
                 background-color: #14E6F2;
                 border-radius: 6.25rem;
+
+                @media (max-width: 1440px) {
+                    @apply hidden;
+                }
             }
         }
 
@@ -149,11 +166,19 @@
             font-weight: 900;
             line-height: 3.75rem;
 
+            @media (max-width: 600px) {
+                font-size: 3rem;
+            }
+
             &~span {
                 font-weight: 700;
                 font-size: 1.25rem;
                 line-height: 1.25rem;
                 font-style: italic;
+
+                @media (max-width: 600px) {
+                    font-size: 1rem;
+                }
             }
 
             &~p {
@@ -162,8 +187,11 @@
                 line-height: 1.25rem;
                 color: #DBDBDB;
                 font-family: 'Open Sans', sans-serif;
-
                 margin-top: 2.25rem;
+
+                @media (max-width: 600px) {
+                    font-size: 1rem;
+                }
             }
 
             &~aside {
@@ -172,6 +200,10 @@
                 font-style: oblique;
 
                 margin-top: 3rem;
+
+                @media (max-width: 600px) {
+                    font-size: .90rem;
+                }
 
             }
 
@@ -199,9 +231,24 @@
                 "logoNpreview content" 1fr
                 "tagsNlinks content" 1fr / 1fr 1fr;
             width: 52.5625rem;
+            max-width: 100vw;
             height: 39.9375rem;
             background-color: #0E111E;
             padding: 0 5.125rem;
+
+            @media (max-width: 600px) {
+                height: auto;
+                grid-template:
+                    "logoNpreview" 340px
+                    "content" 1fr
+                    "tagsNlinks" auto / auto 1fr;
+            }
+
+            @media (max-width: 800px) {
+                padding: 0 1rem;
+            }
+
+
 
             [name="logoNpreview"] {
                 grid-area: logoNpreview;
@@ -247,6 +294,10 @@
                 padding: var(--padding);
                 --url: url('data:image/svg+xml;utf8,<svg width="12.014" height="12.014" viewBox="0 0 3.179 3.179" xmlns="http://www.w3.org/2000/svg"><path d="M.905 0l-.7.7L0 .905v2.274h2.274l.205-.205.495-.496.205-.204V0zm.29.7h1.283v1.284l-.494.494H.7V1.194z" fill="currentColor"/></svg>');
 
+                @media (max-width: 600px) {
+                    right: 15%;
+                }
+
                 &::after {
                     content: '';
                     position: absolute;
@@ -276,12 +327,20 @@
             width: 100%;
             margin: 0 auto;
 
+            @media (max-width: 600px) {
+                max-width: 100%;
+            }
+
             hgroup {
                 position: relative;
             }
 
             h3 {
                 @apply font-semibold text-2xl text-white mt-12;
+
+                @media (max-width: 600px) {
+                    @apply mt-0;
+                }
 
                 &+p {
                     @apply text-white text-sm leading-6 mt-6;
@@ -310,6 +369,16 @@
                     color: #D9D8FF;
                 }
 
+                @media (max-width: 600px) {
+                    &~button {
+                        @apply mt-2
+                    }
+
+                    &~p {
+                        @apply line-clamp-[4];
+                    }
+                }
+
             }
         }
 
@@ -329,16 +398,24 @@
                 margin: 3.2rem 0 3rem 0;
             }
 
+            @media (max-width: 600px) {
+                @apply mb-6;
+                .tags {
+                    margin: 1rem 0;
+                }
+            }
+
 
         }
 
 
-        &__pages { 
+        &__pages {
             @apply flex flex-row justify-center items-center;
 
             label {
                 @apply cursor-pointer grid place-items-center py-2 px-1;
             }
+
             input {
                 cursor: pointer;
                 -webkit-appearance: none;
