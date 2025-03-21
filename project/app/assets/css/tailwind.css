@@ -18,12 +18,35 @@ body {
 
 .btn, .tag {
     shape-outside: padding-box;
-    @apply text-white text-xs leading-6 font-bold rounded-full w-max flex items-center justify-center flex-row;
+    @apply text-white text-xs leading-6 font-bold rounded-full w-max flex items-center justify-center flex-row gap-1;
     background-color: #242938;
-    padding: .0625rem .625rem;
-    transition: all .2s ease-in-out;
+    padding: .1rem .70rem;
+    transition: all .15s ease-in-out;
+    height: max-content;
 }
 
-.btn:hover {
+.tag {
+    font-size: 11px;
+}
+
+.link-icon {
+    border-radius: 7px;
+    background-color: #242938;
+    padding:2px;
+    min-height: 37px;
+    min-width: 37px;
+    max-width: min-content;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1/1;
+    transition: all .05s ease-out;
+}
+
+.btn-link {
+    padding: .625rem;
+    
+}
+
+.btn:hover, .link-icon:hover {
     background-color: rgb(48, 58, 87);
 }

@@ -38,25 +38,67 @@
                             Why ?
                         </h4>
 
-                        <button class="btn">
-                            Read More >
-                        </button>
+
                         <p>
                             This project aims to enable the creation of 3D plans without requiring mastery of modeling
                             tools. Simple modifications to an SVG file are sufficient. This project was created as a
                             foundational structure for another project, which manages classrooms linked to a database,
-                            allowing for the management and interaction with the 3D plan.
+                            allowing for the <br> management <br> and interaction with the 3D plan.
                         </p>
+
+                        <button class="btn">
+                            Read More
+                            <Icon name="ArrowRight" />
+                        </button>
 
                     </hgroup>
                 </section>
                 <aside name="tagsNlinks">
-                    <span>Technologies:</span> Vue.js, TailwindCSS, SVG.js
+                    <div class="tags">
+                        <span class="tag">#Project</span>
+                        <span class="tag">
+                            <Icon name="Map" />
+                            at LIMOS
+                        </span>
+                        <span class="tag">
+                            <Icon name="Calendar" />
+                            in 2025
+                        </span>
+                    </div>
+                    <h4>
+                        Related Links:
+                    </h4>
+                    <div class="links">
+                        <a class="link-icon" href="/">
+                            <Icon name="Gitlab" />
+                        </a>
+                        <!-- LimosBold, Cnrs, VueWhite, Threejs -->
+                        <a class="link-icon" href="/">
+                            <Icon name="LimosBold" />
+                        </a>
+                        <a class="link-icon" href="/">
+                            <Icon name="Cnrs" />
+                        </a>
+                        <a class="link-icon" href="/">
+                            <Icon name="VueWhite" />
+                        </a>
+                        <a class="link-icon" href="/">
+                            <Icon name="Threejs" />
+                        </a>
+
+                    </div>
                 </aside>
             </article>
             <div class="hero__preview__pages">
-
+                <label><input type="radio" name="preview-radio" /></label>
+                <label><input type="radio" name="preview-radio" /></label>
+                <label><input type="radio" name="preview-radio" /></label>
+                <label><input type="radio" name="preview-radio" checked /></label>
+                <label><input type="radio" name="preview-radio" /></label>
+                <label><input type="radio" name="preview-radio" /></label>
+                <label><input type="radio" name="preview-radio" /></label>
             </div>
+            <img src="/layout/GridBackground.svg" alt="" class="grid-background">
         </div>
     </div>
 
@@ -146,15 +188,16 @@
     }
 
     &__preview {
-        @apply flex justify-center items-center;
-
+        @apply flex flex-col justify-center items-center gap-6;
+        padding: 4.75rem 0 4rem 0;
+        position: relative;
+        overflow: visible;
 
         &__content {
             display: grid;
             grid-template:
                 "logoNpreview content" 1fr
                 "tagsNlinks content" 1fr / 1fr 1fr;
-            margin: 4.75rem 0;
             width: 52.5625rem;
             height: 39.9375rem;
             background-color: #0E111E;
@@ -165,9 +208,7 @@
                 position: relative;
             }
 
-            [name="tagsNlinks"] {
-                grid-area: tagsNlinks;
-            }
+
 
             & .logo {
 
@@ -228,7 +269,7 @@
         }
 
         & [name="content"] {
-            
+
             grid-area: content;
 
             max-width: 14.125rem;
@@ -260,22 +301,69 @@
             h4 {
                 @apply font-bold text-white text-sm leading-6 mt-6;
 
-                & ~ button {
-                    /* position: absolute;
-                    right: 0;
-                    bottom: 0; */
-                    float: right;
-                    shape-outside: border-box;
-                    
+                &~button {
+                    @apply -mt-8 float-right;
                 }
 
-                & ~ p {
-                    @apply text-sm leading-6 line-clamp-[10];
-                    /* max-height: 232px; */
-                    color:#D9D8FF;
+                &~p {
+                    @apply text-sm leading-6 line-clamp-[11];
+                    color: #D9D8FF;
                 }
 
             }
+        }
+
+        & [name="tagsNlinks"] {
+            grid-area: tagsNlinks;
+
+            h4 {
+                @apply font-bold text-white text-sm leading-6 mb-3;
+            }
+
+            .tags,
+            .links {
+                @apply flex flex-row justify-start items-center gap-3
+            }
+
+            .tags {
+                margin: 3.2rem 0 3rem 0;
+            }
+
+
+        }
+
+
+        &__pages { 
+            @apply flex flex-row justify-center items-center;
+
+            label {
+                @apply cursor-pointer grid place-items-center py-2 px-1;
+            }
+            input {
+                cursor: pointer;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-color: #162540;
+                width: .5rem;
+                height: .5rem;
+                border-radius: 50%;
+
+                &:checked {
+                    background-color: #0349C8;
+                    transform: scale(1.25);
+                }
+            }
+        }
+
+        .grid-background {
+            position: absolute;
+            bottom: 0;
+            left: -250px;
+            z-index: -1;
+            width: 1641px;
+            height: 465px;
+            max-width: none;
         }
     }
 }

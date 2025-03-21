@@ -48,7 +48,8 @@
     z-index: -3;
     overflow: clip;
 
-    background-color: #080C14;
+    background-color: #05080f;
+    /* background-color: #080C14; */
 
     &::after {
         content: '';
