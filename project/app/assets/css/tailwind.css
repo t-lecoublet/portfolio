@@ -22,7 +22,7 @@ body, html {
     @apply text-white text-xs leading-6 font-bold rounded-full w-max flex items-center justify-center flex-row gap-1;
     background-color: #242938;
     padding: .1rem .70rem;
-    transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out !important;
     height: max-content;
 }
 
@@ -40,7 +40,7 @@ body, html {
     display: grid;
     place-items: center;
     aspect-ratio: 1/1;
-    transition: all .05s ease-out;
+    transition: all .05s ease-out !important;
 
     img {
         width: 28px;
