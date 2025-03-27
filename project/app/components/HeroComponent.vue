@@ -16,7 +16,7 @@ const Ressources = [
             class: ''
         },
         logo: '/main/logoSvgToPlan.svg',
-        colors: ['preview-border-[#37D69E]', '#3BE8A3' , '#304467']
+        colors: ['preview-border-[#37D69E]', '#304467', '#3BE8A3']
     },
     {
         title: 'PIXCSS',
@@ -32,10 +32,40 @@ const Ressources = [
             class: '!bottom-8'
         },
         logo: '/main/logoPixcss.svg',
-        colors: ['preview-border-[#CB3153]', '#421222' , '#FBC75A']
+        colors: ['preview-border-[#CB3153]', '#421222', '#FBC75A']
 
     },
-    // You can add more resources here
+    {
+        title: 'UCCV',
+        description: 'A showcase website and an association management application.',
+        why: `This project was designed to provide a comprehensive digital solution for the UCCV association,
+        combining a public-facing showcase website with a powerful internal management system. 
+        The platform streamlines administrative tasks, membership tracking, and event organization 
+        while presenting <br> a professional <br> public image to potential members and partners.`,
+        tags: ['#Project', 'at Home', 'since 2022'],
+        links: ['Uccv', 'Github', 'VueWhite', 'Litestar', 'Directus'],
+        preview: {
+            link: '/main/previewUccv.png',
+            class: 'w-36'
+        },
+        logo: '/main/logoUccv.png',
+        colors: ['preview-border-[#f9dd28]', '#5c4213', '#F2D16B']
+    },
+    {
+        title: 'Profan Transfer',
+        description: 'This platform shares resources and collects information for the monitoring and evaluation.',
+        why: `This platform serves as a collaborative workspace for consortium researchers and all participants—teachers, trainers, and inspection staff—throughout the project.
+        It is available for knowledge-sharing, training, teaching, research, and the dissemination of scientific and educational <br> information. <br>
+        At its core, the platform features two collaborative applications: a content-sharing space (the Cloud) and a discussion and communication space (the Forum).`,
+        tags: ['#Project', 'at LIMOS', 'since 2023'],
+        links: ['LimosBold', 'Cnrs', 'VueWhite', 'Mongodb', 'Sqlalchemy'],
+        preview: {
+            link: '/main/previewProfantransfer.png',
+            class: 'w-48'
+        },
+        logo: '/main/logoProfantransfer.svg',
+        colors: ['preview-border-[#CB3153]', '#421222', '#CB3153']
+    },
 ]
 
 const selectedRessource = ref(0)
@@ -53,10 +83,10 @@ const progressComplete = ref(false)
 // Function to handle resource change with transition
 const changeResource = (index: number) => {
     if (selectedRessource.value === index || isTransitioning.value) return
-    
+
     isTransitioning.value = true
     resetProgressBar() // Reset progress bar when changing resources
-    
+
     setTimeout(() => {
         selectedRessource.value = index
         setTimeout(() => {
@@ -71,16 +101,16 @@ const changeResource = (index: number) => {
 // Progress bar functions
 const startProgressBar = () => {
     if (progressInterval.value) return
-    
+
     progressValue.value = 0
     progressComplete.value = false
     const startTime = Date.now()
-    
+
     progressInterval.value = window.setInterval(() => {
         const elapsedTime = Date.now() - startTime
         const newValue = Math.min((elapsedTime / AUTO_CHANGE_DELAY) * 100, 100)
         progressValue.value = newValue
-        
+
         // Check if the progress is complete
         if (newValue >= 100 && !progressComplete.value) {
             progressComplete.value = true
@@ -107,9 +137,9 @@ const resetProgressBar = () => {
 // Auto-change resource in intervals if not interacting
 const startAutoChange = () => {
     if (autoChangeInterval.value) return
-    
+
     startProgressBar() // Start progress bar when auto-change begins
-    
+
     // We no longer need the auto change interval since the progress bar triggers the change
     // Keep this function for API consistency, but it now just starts the progress bar
 }
@@ -117,9 +147,9 @@ const startAutoChange = () => {
 // Stop auto-changing when user interacts
 const stopAutoChange = () => {
     isUserInteracting.value = true
-    
+
     resetProgressBar() // Reset progress bar when user interacts
-    
+
     if (autoChangeInterval.value) {
         window.clearInterval(autoChangeInterval.value)
         autoChangeInterval.value = null
@@ -174,17 +204,13 @@ const currentResource = computed(() => Ressources[selectedRessource.value])
             </button>
         </div>
         <div class="hero__preview">
-            <article 
-                class="hero__preview__content" 
-                :class="{ 'switch': isTransitioning }"
-                @mouseenter="stopAutoChange"
-                @mouseleave="resumeAutoChange" 
-            >
+            <article class="hero__preview__content" :class="{ 'switch': isTransitioning }" @mouseenter="stopAutoChange"
+                @mouseleave="resumeAutoChange">
                 <section name="logoNpreview" :style="{ '--src': `url('${currentResource.logo}')` }">
                     <div class="logo"></div>
                     <div class="logo__blur"></div>
-                    <div v-if="currentResource.preview"
-                     class="preview preview__border " :class="[currentResource.colors[0],currentResource.preview.class]">
+                    <div v-if="currentResource.preview" class="preview preview__border "
+                        :class="[currentResource.colors[0], currentResource.preview.class]">
                         <img :src="currentResource.preview.link" alt="">
                     </div>
                 </section>
@@ -198,7 +224,8 @@ const currentResource = computed(() => Ressources[selectedRessource.value])
                         </p>
                     </hgroup>
 
-                    <hr  :style="{ '--color-start': currentResource.colors[1], '--color-end': currentResource.colors[2]}" />
+                    <hr
+                        :style="{ '--color-start': currentResource.colors[1], '--color-end': currentResource.colors[2] }" />
 
                     <hgroup>
                         <h4>
@@ -240,22 +267,15 @@ const currentResource = computed(() => Ressources[selectedRessource.value])
                         </a>
                     </div>
                 </aside>
-                <div class="hero__preview__progress-container" :class="{ 'w-0' : isUserInteracting}">
+                <div class="hero__preview__progress-container" :class="{ 'w-0': isUserInteracting }">
                     <div class="hero__preview__progress-bar" :style="{ width: `${progressValue}%` }"></div>
                 </div>
             </article>
 
             <div class="hero__preview__pages">
-                <label 
-                    v-for="(resource, index) in Ressources" 
-                    :key="index"
-                >
-                    <input 
-                        type="radio" 
-                        name="preview-radio" 
-                        :checked="index === selectedRessource" 
-                        @change="handleRadioChange(index)"
-                    />
+                <label v-for="(resource, index) in Ressources" :key="index">
+                    <input type="radio" name="preview-radio" :checked="index === selectedRessource"
+                        @change="handleRadioChange(index)" />
                 </label>
             </div>
             <img src="/layout/GridBackground.svg" alt="" class="grid-background">
@@ -423,7 +443,8 @@ const currentResource = computed(() => Ressources[selectedRessource.value])
                 transition: all 1s;
                 filter: blur(0);
             }
-            &.switch > *:not(.hero__preview__progress-container, .hero__preview__progress-bar) {
+
+            &.switch>*:not(.hero__preview__progress-container, .hero__preview__progress-bar) {
                 filter: blur(16px);
                 opacity: 0;
             }
@@ -599,6 +620,7 @@ const currentResource = computed(() => Ressources[selectedRessource.value])
 
             @media (max-width: 600px) {
                 @apply mb-6;
+
                 .tags {
                     margin: 1rem 0;
                 }
@@ -608,24 +630,24 @@ const currentResource = computed(() => Ressources[selectedRessource.value])
         }
 
         &__progress-container {
-                @apply w-full h-[1px] bg-gray-800 overflow-hidden;
-                position: absolute;
-                bottom: 0;
-                left:0;
-                
-                .hero__preview__progress-bar {
-                    @apply h-full bg-blue-500;
-                    transition: width 30ms linear;
-                }
+            @apply w-full h-[1px] bg-gray-800 overflow-hidden;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            .hero__preview__progress-bar {
+                @apply h-full bg-blue-500;
+                transition: width 30ms linear;
             }
+        }
 
         &__pages {
             @apply flex flex-row justify-center items-center;
             position: relative;
             width: 100%;
-            
 
-            
+
+
             label {
                 @apply cursor-pointer grid place-items-center py-2 px-1;
             }
@@ -645,7 +667,7 @@ const currentResource = computed(() => Ressources[selectedRessource.value])
                     transform: scale(1.25);
                 }
             }
-            
+
             @apply flex flex-row justify-center items-center gap-1;
         }
 
